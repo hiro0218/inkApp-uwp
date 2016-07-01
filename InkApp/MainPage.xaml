@@ -1,0 +1,46 @@
+﻿<Page x:Class="InkApp.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:inkTools="using:Microsoft.Labs.InkToolbarControl"
+      xmlns:local="using:InkApp"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+
+    <Grid Background="LightGray" Padding="24">
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+
+            <Grid Name="canvaContainer"
+                  Width="750"
+                  Height="600"
+                  Background="White">
+                <InkCanvas x:Name="inkCanvas"
+                           Width="{Binding ElementName=canvaContainer,
+                                           Path=ActualWidth}"
+                           Height="{Binding ElementName=canvaContainer,
+                                            Path=ActualHeight}" />
+
+            </Grid>
+        </ScrollViewer>
+        <inkTools:InkToolbar HorizontalAlignment="Right"
+                             VerticalAlignment="Top"
+                             PenColor="#FFE61021"
+                             TargetInkCanvas="{x:Bind inkCanvas}" />
+
+
+    </Grid>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Click="btnLoad_Click"
+                          Icon="OpenFile"
+                          Label="Open Stroke" />
+            <AppBarButton Click="btnSave_Click"
+                          Icon="Save"
+                          Label="Save Stroke" />
+            <!--<AppBarSeparator />
+            <AppBarButton Click="btnClear_Click"
+                          Icon="Clear"
+                          Label="Clear All Stroke" />-->
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>
